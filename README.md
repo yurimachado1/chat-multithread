@@ -24,12 +24,13 @@ Este é um programa de chat simples em Python que permite múltiplos usuários c
    python server.py PORTA
 Substitua PORTA pela porta em que deseja que o servidor escute (por padrão, é 19000).
 
-Executando o Cliente
-Execute um cliente com o seguinte comando:
+###Executando o Cliente
 
-bash
-Copy code
-python client.py ENDEREÇO_DO_SERVIDOR PORTA
+1. Execute um cliente com o seguinte comando:
+
+    ```bash
+    python client.py ENDEREÇO_DO_SERVIDOR PORTA
+
 Substitua ENDEREÇO_DO_SERVIDOR pelo endereço IP do servidor (por exemplo, 127.0.0.1) e PORTA pela mesma porta que você configurou no servidor.
 
 
