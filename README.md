@@ -1,43 +1,119 @@
-# Chat em Python com Múltiplos Usuários
+# Chat multi-thread
+Este é um sistema de chat em Python que utiliza uma arquitetura multi-thread, com um servidor e clientes. O servidor é capaz de receber várias conexões de clientes e permite que eles se comuniquem entre si. Além disso, o sistema suporta algumas funcionalidades especiais, como a exibição das últimas 15 mensagens ordenadas pelo horário de envio, logout do cliente, upload e download de arquivos.
 
-Este é um programa de chat simples em Python que permite múltiplos usuários conversarem em um servidor. Ele oferece recursos como formatação de mensagens, comandos para ordenar mensagens, fazer logout, fazer upload e download de arquivos.
+## Requisitos
+Para executar o sistema de chat, você precisa de:
 
-## Funcionalidades
+Python 3.x instalado no seu sistema.
+## Instruções de Uso
+### Servidor
+Abra um terminal e navegue até o diretório onde o arquivo do servidor está localizado.
 
-- **Múltiplos Usuários:** Vários clientes podem se conectar e conversar simultaneamente.
+Execute o servidor Python com o seguinte comando:
+    
+    ```bash
+    python server.py
 
-- **Formatação de Mensagens:** As mensagens são impressas no formato ":: MENSAGEM".
+Substitua server.py pelo nome do arquivo do servidor, se for diferente.
 
-- **Comandos Suportados:**
-    - `@SAIR`: Faz logout do cliente.
-    - `@UPLOAD`: Faz upload de um arquivo para o servidor.
-    - `@DOWNLOAD`: Faz download de um arquivo do servidor.
-    - `@ORDENAR`: Mostra as últimas 15 mensagens, ordenadas pelo horário de envio.
+O servidor estará agora escutando por conexões de clientes na porta especificada (no código fornecido, a porta padrão é 4040). Você verá uma mensagem indicando que o servidor está pronto para aceitar conexões.
 
-## Como Usar
+### Cliente
+Abra um terminal e navegue até o diretório onde o arquivo do cliente está localizado.
 
-### Executando o Servidor
-
-1. Execute o servidor com o seguinte comando:
-
-   ```bash
-   python server.py PORTA
-Substitua PORTA pela porta em que deseja que o servidor escute (por padrão, é 19000).
-
-### Executando o Cliente
-
-1. Execute um cliente com o seguinte comando:
+Execute o cliente Python com o seguinte comando:
 
     ```bash
-    python client.py ENDEREÇO_DO_SERVIDOR PORTA
+    python client.py
+Substitua client.py pelo nome do arquivo do cliente, se for diferente.
 
-Substitua ENDEREÇO_DO_SERVIDOR pelo endereço IP do servidor (por exemplo, 127.0.0.1) e PORTA pela mesma porta que você configurou no servidor.
+### Funcionalidades disponíveis
 
+O cliente solicitará que você insira uma mensagem. Digite sua mensagem e pressione Enter para enviá-la ao servidor. Você verá suas mensagens sendo exibidas no terminal.
 
+#### Sair do chat: 
+Para sair do chat, digite "@SAIR" e pressione Enter. Isso encerrará a conexão do cliente com o servidor e fechará o cliente.
 
-Comandos do Cliente
-Para enviar mensagens, basta digitá-las e pressionar Enter.
-Use @SAIR para sair do chat.
-Use @UPLOAD NOME_DO_ARQUIVO para fazer upload de um arquivo.
-Use @DOWNLOAD NOME_DO_ARQUIVO para fazer download de um arquivo.
-Use @ORDENAR para ver as últimas 15 mensagens ordenadas por horário.
+#### Ordenar mensagens
+Para exibir as últimas 15 mensagens ordenadas pelo horário de envio, digite "@ORDENAR" e pressione Enter.
+
+#### Upload
+Para fazer upload de um arquivo para o servidor, digite "@UPLOAD" e pressione Enter. Você será solicitado a inserir o nome do arquivo a ser enviado. Certifique-se de que o arquivo esteja no mesmo diretório que o cliente Python.
+
+#### Download
+Para fazer download de um arquivo do servidor, digite "@DOWNLOAD" e pressione Enter. Você será solicitado a inserir o nome do arquivo a ser baixado. O arquivo será salvo no mesmo diretório que o cliente Python.
+
+## Exemplos de Uso
+Enviando Mensagens
+Cliente:
+
+python
+Copy code
+Digite sua mensagem: Olá, pessoal!
+Servidor:
+
+python
+Copy code
+Nova conexão de ('192.168.0.100', 12345)
+::Cliente 192.168.0.100: Olá, pessoal!
+Saindo do Chat
+Cliente:
+
+python
+Copy code
+Digite sua mensagem: @SAIR
+Servidor:
+
+python
+Copy code
+Cliente 192.168.0.100 saiu do chat.
+Exibindo Mensagens Ordenadas
+Cliente:
+
+python
+Copy code
+Digite sua mensagem: @ORDENAR
+Servidor:
+
+python
+Copy code
+::Mensagem 15
+::Mensagem 14
+::Mensagem 13
+::Mensagem 12
+::Mensagem 11
+::Mensagem 10
+::Mensagem 9
+::Mensagem 8
+::Mensagem 7
+::Mensagem 6
+::Mensagem 5
+::Mensagem 4
+::Mensagem 3
+::Mensagem 2
+::Mensagem 1
+Enviando Arquivos para o Servidor
+Cliente:
+
+python
+Copy code
+Digite sua mensagem: @UPLOAD
+Nome do arquivo a ser enviado: arquivo.txt
+Servidor:
+
+python
+Copy code
+Arquivo 'arquivo.txt' recebido com sucesso.
+Baixando Arquivos do Servidor
+Cliente:
+
+python
+Copy code
+Digite sua mensagem: @DOWNLOAD
+Nome do arquivo a ser baixado: arquivo.txt
+Servidor:
+
+python
+Copy code
+Cliente 192.168.0.100 solicitou o download do arquivo 'arquivo.txt'.
+Isso resume como usar o sistema de chat em Python. Você pode executar vários clientes em diferentes terminais para iniciar conversas simultâneas. Certifique-se de que o servidor esteja em execução antes de iniciar os clientes.
