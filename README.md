@@ -1,5 +1,5 @@
 # Chat multi-thread
-Este é um sistema de chat em Python que utiliza uma arquitetura multi-thread, com um servidor e clientes. O servidor é capaz de receber várias conexões de clientes e permite que eles se comuniquem entre si. Além disso, o sistema suporta algumas funcionalidades especiais, como a exibição das últimas 15 mensagens ordenadas pelo horário de envio, logout do cliente, upload e download de arquivos.
+Trabalho desenvolvido por Cleber Trindade e Yuri Machado. Este é um sistema de chat em Python que utiliza uma arquitetura multi-thread, com um servidor e cliente. O servidor é capaz de receber várias conexões de clientes e permite que eles se comuniquem entre si. Além disso, o sistema suporta algumas funcionalidades especiais, como a exibição das últimas 15 mensagens ordenadas pelo horário de envio, logout do cliente, upload e download de arquivos.
 
 ## Requisitos
 Para executar o sistema de chat, você precisa de:
