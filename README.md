@@ -11,10 +11,9 @@ Abra um terminal e navegue até o diretório onde o arquivo do servidor está lo
 
 Execute o servidor Python com o seguinte comando:
     
-    ```bash
     python server.py
-
-Substitua server.py pelo nome do arquivo do servidor, se for diferente.
+    
+Substitua ***server.py*** pelo nome do arquivo do servidor, se for diferente.
 
 O servidor estará agora escutando por conexões de clientes na porta especificada (no código fornecido, a porta padrão é 4040). Você verá uma mensagem indicando que o servidor está pronto para aceitar conexões.
 
@@ -23,9 +22,8 @@ Abra um terminal e navegue até o diretório onde o arquivo do cliente está loc
 
 Execute o cliente Python com o seguinte comando:
 
-    ```bash
     python client.py
-Substitua client.py pelo nome do arquivo do cliente, se for diferente.
+Substitua ***client.py*** pelo nome do arquivo do cliente, se for diferente.
 
 ### Funcionalidades disponíveis
 
@@ -44,76 +42,72 @@ Para fazer upload de um arquivo para o servidor, digite "@UPLOAD" e pressione En
 Para fazer download de um arquivo do servidor, digite "@DOWNLOAD" e pressione Enter. Você será solicitado a inserir o nome do arquivo a ser baixado. O arquivo será salvo no mesmo diretório que o cliente Python.
 
 ## Exemplos de Uso
-Enviando Mensagens
+
+### Enviando Mensagens
 Cliente:
 
-python
-Copy code
-Digite sua mensagem: Olá, pessoal!
+
+    Digite sua mensagem: Olá, pessoal!
 Servidor:
 
-python
-Copy code
-Nova conexão de ('192.168.0.100', 12345)
-::Cliente 192.168.0.100: Olá, pessoal!
-Saindo do Chat
+
+    Nova conexão de ('192.168.0.100', 12345)
+    ::Cliente 192.168.0.100: Olá, pessoal!
+
+### Saindo do Chat
+
+Cliente:
+    
+    Digite sua mensagem: @SAIR
+
+Servidor:
+    
+    Cliente 192.168.0.100 saiu do chat.
+
+### Exibindo Mensagens Ordenadas
+
 Cliente:
 
-python
-Copy code
-Digite sua mensagem: @SAIR
+
+    Digite sua mensagem: @ORDENAR
+
 Servidor:
 
-python
-Copy code
-Cliente 192.168.0.100 saiu do chat.
-Exibindo Mensagens Ordenadas
+
+    ::Mensagem 15
+    ::Mensagem 14
+    ::Mensagem 13
+    ::Mensagem 12
+    ::Mensagem 11
+    ::Mensagem 10
+    ::Mensagem 9
+    ::Mensagem 8
+    ::Mensagem 7
+    ::Mensagem 6
+    ::Mensagem 5
+    ::Mensagem 4
+    ::Mensagem 3
+    ::Mensagem 2
+    ::Mensagem 1
+
+### Enviando Arquivos para o Servidor
 Cliente:
 
-python
-Copy code
-Digite sua mensagem: @ORDENAR
+    Digite sua mensagem: @UPLOAD
+    Nome do arquivo a ser enviado: arquivo.txt
+
 Servidor:
 
-python
-Copy code
-::Mensagem 15
-::Mensagem 14
-::Mensagem 13
-::Mensagem 12
-::Mensagem 11
-::Mensagem 10
-::Mensagem 9
-::Mensagem 8
-::Mensagem 7
-::Mensagem 6
-::Mensagem 5
-::Mensagem 4
-::Mensagem 3
-::Mensagem 2
-::Mensagem 1
-Enviando Arquivos para o Servidor
+    Arquivo 'arquivo.txt' recebido com sucesso.
+
+### Baixando Arquivos do Servidor
 Cliente:
 
-python
-Copy code
-Digite sua mensagem: @UPLOAD
-Nome do arquivo a ser enviado: arquivo.txt
+    Digite sua mensagem: @DOWNLOAD
+    Nome do arquivo a ser baixado: arquivo.txt
+
 Servidor:
 
-python
-Copy code
-Arquivo 'arquivo.txt' recebido com sucesso.
-Baixando Arquivos do Servidor
-Cliente:
+    Cliente 192.168.0.100 solicitou o download do arquivo 'arquivo.txt'.
 
-python
-Copy code
-Digite sua mensagem: @DOWNLOAD
-Nome do arquivo a ser baixado: arquivo.txt
-Servidor:
-
-python
-Copy code
-Cliente 192.168.0.100 solicitou o download do arquivo 'arquivo.txt'.
 Isso resume como usar o sistema de chat em Python. Você pode executar vários clientes em diferentes terminais para iniciar conversas simultâneas. Certifique-se de que o servidor esteja em execução antes de iniciar os clientes.
