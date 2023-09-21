@@ -1,35 +1,37 @@
 import socket
-import select
 import sys
 import threading
 
-if len(sys.argv) < 2:
-    print("usage: client SERVER_IP [PORT]")
-    sys.exit(1)
+# Função para lidar com a entrada do usuário em uma thread separada
+def user_input_thread():
+    while True:
+        message = input("Digite sua mensagem: ")
+        server.send(message.encode("utf-8"))
 
-ip_address = sys.argv[1]
-port = int(sys.argv[2]) if len(sys.argv) > 2 else 19000
+# Defina o endereço IP do servidor e a porta manualmente
+ip_address = '192.168.0.151'
+port = 4040
 
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.connect((ip_address, port))
+try:
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.connect((ip_address, port))
+    print("Conexão com o servidor estabelecida com sucesso!")
+except Exception as e:
+    print("Erro ao conectar ao servidor:", e)
+    sys.exit(1)  # Encerra o programa em caso de erro de conexão
 
-running = True
+# Inicie uma thread para lidar com a entrada do usuário
+user_input_thread = threading.Thread(target=user_input_thread)
+user_input_thread.start()
 
-# Função para receber mensagens do servidor e imprimir
-def receive_messages():
-    while running:
-        try:
-            message = server.recv(2048).decode("utf-8")
-            print(message)
-        except:
-            continue
-
-# Inicia uma thread para receber mensagens do servidor
-receive_thread = threading.Thread(target=receive_messages)
-receive_thread.start()
-
-while running:
-    message = input()
-    server.send(message.encode("utf-8"))
-
-server.close()
+# Loop principal do cliente para receber mensagens
+while True:
+    try:
+        message = server.recv(2048).decode("utf-8")
+        if not message:
+            print("Servidor desconectado.")
+            break
+        print(message)
+    except Exception as e:
+        print("Erro ao receber mensagem do servidor:", e)
+        break
